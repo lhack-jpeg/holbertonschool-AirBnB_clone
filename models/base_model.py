@@ -32,7 +32,7 @@ class BaseModel:
         """
         Returns a readable string of an instance
         """
-        return f"{[self.__class__.__name__]} ({self.id}) {self.__dict__}"
+        return f"[BaseModel] ({self.id}) {self.__dict__}"
 
     def save(self):
         """
