@@ -20,5 +20,9 @@ class HBNBCommand(cmd.Cmd):
         print()
         return True
 
+    def emptyline(self):
+        """Overrides parent empty line method"""
+        pass
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
