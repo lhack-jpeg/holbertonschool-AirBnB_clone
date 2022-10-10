@@ -41,7 +41,7 @@ class TestFileStorage(unittest.TestCase):
         '''Set up test environment'''
         if os.path.exists("file.json"):
             os.remove("file.json")
-        storage = FileStorage()
+        cls.storage = FileStorage()
         storage.reload()
         cls.all_objs = storage.all()
         cls.b1 = BaseModel()
@@ -62,8 +62,8 @@ class TestFileStorage(unittest.TestCase):
         my_model.postcode = 2026
         my_model.name = "Ron Swanson"
         my_model.id = '123456'
-        storage.new(my_model)
-        all_objs = storage.all()
+        self.storage.new(my_model)
+        all_objs = self.storage.all()
         key = my_model.__class__.__name__ + '.' + my_model.id
         self.assertIsNotNone(all_objs[key])
 
@@ -71,8 +71,8 @@ class TestFileStorage(unittest.TestCase):
         '''Test save creates file'''
         if os.path.exists("file.json"):
             os.remove("file.json")
-        storage = FileStorage()
-        storage.save()
+        self.storage = FileStorage()
+        self.storage.save()
         self.assertTrue(os.path.exists("file.json"))
 
     def test_file_storage_reload(self):
