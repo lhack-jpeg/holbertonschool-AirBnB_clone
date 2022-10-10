@@ -10,7 +10,7 @@ class FileStorage:
     '''This is the constructor for the file storage class.'''
     def __init__(self):
         '''Initalise the Filestoage class'''
-        self.__file_path = "dope_file_path_name.json"
+        self.__file_path = "file.json"
         self.__objects = {}
 
     def all(self):
