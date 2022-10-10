@@ -35,6 +35,7 @@ class FileStorage:
     def reload(self):
         '''Reads the file and deserialise the file. If file doesn't exist do
         nothing.'''
+        json_dict = {}
         filename = self.__file_path
         class_dict = {
             "BaseModel": BaseModel
