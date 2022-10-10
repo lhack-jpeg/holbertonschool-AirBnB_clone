@@ -42,19 +42,21 @@ class TestFileStorage(unittest.TestCase):
         if os.path.exists("file.json"):
             os.remove("file.json")
         cls.storage = FileStorage()
-        storage.reload()
+        cls.storage.reload()
         cls.all_objs = storage.all()
         cls.b1 = BaseModel()
 
     def test_file_path(self):
         '''Test the file_path exists.'''
-        storage.save()
-        self.assertTrue(os.path.exists(storage._FileStorage__file_path))
+        self.storage.save()
+        file_path = self.storage._FileStorage__file_path
+        self.assertTrue(os.path.exists(file_path))
 
     def test_file_storage_objects(self):
         '''Test to see the __object attribute.'''
-        self.assertTrue(isinstance(storage.all(), dict))
-        self.assertTrue(isinstance(storage._FileStorage__objects, dict))
+        self.assertTrue(isinstance(self.storage.all(), dict))
+        self.assertTrue(isinstance(self.storage._FileStorage__objects, dict))
+        self.assertIs(self.storage.all(), self.storage._FileStorage__objects)
 
     def test_file_storage_new(self):
         '''Test new method functionality of Filestorage.'''
@@ -77,6 +79,6 @@ class TestFileStorage(unittest.TestCase):
 
     def test_file_storage_reload(self):
         '''test Reload method.'''
-        storage = FileStorage()
-        storage.reload()
-        self.assertIsNotNone(storage.all())
+        self.storage = FileStorage()
+        self.storage.reload()
+        self.assertIsNotNone(self.storage.all())
