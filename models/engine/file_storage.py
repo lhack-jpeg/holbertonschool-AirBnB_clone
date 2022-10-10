@@ -15,7 +15,6 @@ class FileStorage:
 
     def all(self):
         '''Returns the dictionary __objects'''
-        self.reload()
         return self.__objects
 
     def new(self, obj):
