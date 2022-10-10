@@ -79,3 +79,9 @@ class TestBaseModel(unittest.TestCase):
         self.b1.save()
         self.assertNotEqual(self.b1.created_at, self.b1.updated_at)
         self.assertTrue(self.b1.created_at < self.b1.updated_at)
+
+    def test_BaseModel_to_dict(self):
+        my_dict = self.b2.to_dict()
+        self.assertTrue(isinstance(my_dict, dict))
+        test_dict_keys = ['id', 'created_at', 'updated_at', '__class__']
+        self.assertEqual(list(my_dict.keys()), test_dict_keys)
