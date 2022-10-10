@@ -49,7 +49,7 @@ class TestFileStorage(unittest.TestCase):
     def test_file_path(self):
         '''Test the file_path exists.'''
         self.storage.save()
-        file_path = self.storage._FileStorage__file_path
+        file_path = FileStorage._FileStorage__file_path
         self.assertTrue(os.path.exists(file_path))
 
     def test_file_storage_objects(self):
@@ -57,6 +57,7 @@ class TestFileStorage(unittest.TestCase):
         self.assertTrue(isinstance(self.storage.all(), dict))
         self.assertTrue(isinstance(self.storage._FileStorage__objects, dict))
         self.assertIs(self.storage.all(), self.storage._FileStorage__objects)
+        self.assertIsNotNone(self.storage._FileStorage__objects)
 
     def test_file_storage_new(self):
         '''Test new method functionality of Filestorage.'''
