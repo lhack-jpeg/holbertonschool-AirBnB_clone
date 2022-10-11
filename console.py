@@ -3,6 +3,7 @@
 This module contains one class HBNBCommand
 """
 import cmd
+import sys
 from models.base_model import BaseModel
 import models
 
@@ -133,38 +134,33 @@ class HBNBCommand(cmd.Cmd):
         Usage: update <class name> <id> <attribute name> <attribute value>
         """
         args = arg.split()
-
         if len(args) == 0:
             print("** class name missing **")
-
         elif args[0] not in self.class_list:
             print("** class doesn't exist **")
-
         elif len(args) == 1:
             print("** instance id missing **")
+        else:
+            elem = args[0] + "." + args[1]
+            flag = 0
 
-        obj_keys = args[0] + "." + args[1]
-        instance_found = 0
+            for key, value in models.storage.all().items():
+                if elem == key:
+                    flag = 1
+                    break
 
-        for key, value in models.storage.all().items():
-            if obj_keys == key:
-                instance_found = 1
-                break
+            if flag == 0:
+                print("** no instance found **")
+                return
+            if len(args) < 3:
+                print("** attribute name missing **")
+                return
+            if len(args) < 4:
+                print("** value missing **")
+                return
 
-        if instance_found == 0:
-            print("** no instance found **")
-            return
-
-        if len(args) < 3:
-            print("** attribute name missing **")
-            return
-
-        if len(args) < 4:
-            print("** value missing **")
-            return
-
-        setattr(value, args[2], args[3].replace('"', ''))
-        models.storage.save()
+            setattr(value, args[2], args[3].replace('"', ''))
+            models.storage.save()
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
