@@ -5,7 +5,7 @@ This module contains one class HBNBCommand
 import cmd
 from models.base_model import BaseModel
 import models
-
+from models.engine.file_storage import FileStorage
 
 class HBNBCommand(cmd.Cmd):
     """
@@ -13,6 +13,9 @@ class HBNBCommand(cmd.Cmd):
     """
     prompt = "(hbnb) "
     class_list = ["BaseModel"]
+    int_attrs = ["number_rooms", "number_bathrooms", "max_guest",
+                 "price_by_night"]
+    float_attrs = ["latitude", "longitude"]
 
     def do_quit(self, arg):
         """Quit command to exit the program"""
@@ -39,7 +42,7 @@ class HBNBCommand(cmd.Cmd):
 
         args = arg.split()
         if args[0] not in self.class_list:
-            print("** class name missing **")
+            print("** class doesn't exist **")
             return
         new_obj = globals()[args[0]]()
         new_obj.save()
@@ -132,26 +135,30 @@ class HBNBCommand(cmd.Cmd):
         Updates an instance based on class name and class id
         Usage: update <class name> <id> <attribute name> <attribute value>
         """
+        if not arg:
+            print("** class name missing **")
+            return
+
         args = arg.split()
 
-        if len(args) == 0:
-            print("** class name missing **")
-
-        elif args[0] not in self.class_list:
+        if args[0] not in HBNBCommand.classes_list:
             print("** class doesn't exist **")
+            return
 
-        elif len(args) == 1:
+        if len(args) < 2:
             print("** instance id missing **")
+            return
 
-        obj_keys = args[0] + "." + args[1]
-        instance_found = 0
+        obj_key = args[0] + "." + args[1]
+        storage = FileStorage()
+        all_objs = storage.all()
+        instance_found = False
 
-        for key, value in models.storage.all().items():
-            if obj_keys == key:
-                instance_found = 1
-                break
+        for key, value in all_objs.items():
+            if key == obj_key:
+                instance_found = value
 
-        if instance_found == 0:
+        if not instance_found:
             print("** no instance found **")
             return
 
@@ -163,8 +170,14 @@ class HBNBCommand(cmd.Cmd):
             print("** value missing **")
             return
 
-        setattr(value, args[2], args[3].replace('"', ''))
-        models.storage.save()
+        if args[2] in self.int_attrs:
+            setattr(instance_found, args[2], int(args[3]))
+        elif args[2] in self.float_attrs:
+            setattr(instance_found, args[2], float(args[3]))
+        else:
+            setattr(instance_found, args[2], args[3])
+
+        instance_found.save()
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
