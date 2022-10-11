@@ -3,6 +3,7 @@
 
 
 from models.base_model import BaseModel
+from models.user import User
 import json
 
 
@@ -37,7 +38,8 @@ class FileStorage:
         json_dict = {}
         filename = self.__file_path
         class_dict = {
-            "BaseModel": BaseModel
+            "BaseModel": BaseModel,
+            "User": User
             }
         try:
             with open(filename, 'r') as json_file:
