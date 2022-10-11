@@ -3,6 +3,7 @@
 This module contains one class HBNBCommand
 """
 import cmd
+import sys
 from models.base_model import BaseModel
 import models
 from models.engine.file_storage import FileStorage
@@ -135,49 +136,34 @@ class HBNBCommand(cmd.Cmd):
         Updates an instance based on class name and class id
         Usage: update <class name> <id> <attribute name> <attribute value>
         """
-        if not arg:
-            print("** class name missing **")
-            return
-
         args = arg.split()
-
-        if args[0] not in self.class_list:
+        if len(args) == 0:
+            print("** class name missing **")
+        elif args[0] not in self.class_list:
             print("** class doesn't exist **")
-            return
-
-        if len(args) < 2:
+        elif len(args) == 1:
             print("** instance id missing **")
-            return
-
-        obj_key = args[0] + "." + args[1]
-        storage = FileStorage()
-        all_objs = storage.all()
-        instance_found = False
-
-        for key, value in all_objs.items():
-            if key == obj_key:
-                instance_found = value
-
-        if not instance_found:
-            print("** no instance found **")
-            return
-
-        if len(args) < 3:
-            print("** attribute name missing **")
-            return
-
-        if len(args) < 4:
-            print("** value missing **")
-            return
-
-        if args[2] in self.int_attrs:
-            setattr(instance_found, args[2], int(args[3]))
-        elif args[2] in self.float_attrs:
-            setattr(instance_found, args[2], float(args[3]))
         else:
-            setattr(instance_found, args[2], args[3])
+            elem = args[0] + "." + args[1]
+            flag = 0
 
-        instance_found.save()
+            for key, value in models.storage.all().items():
+                if elem == key:
+                    flag = 1
+                    break
+
+            if flag == 0:
+                print("** no instance found **")
+                return
+            if len(args) < 3:
+                print("** attribute name missing **")
+                return
+            if len(args) < 4:
+                print("** value missing **")
+                return
+
+            setattr(value, args[2], args[3].replace('"', ''))
+            models.storage.save()
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
