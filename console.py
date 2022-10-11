@@ -39,7 +39,7 @@ class HBNBCommand(cmd.Cmd):
 
         args = arg.split()
         if args[0] not in self.class_list:
-            print("** class name missing **")
+            print("** class doesn't exist **")
             return
         new_obj = globals()[args[0]]()
         new_obj.save()
