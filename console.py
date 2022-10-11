@@ -13,10 +13,7 @@ class HBNBCommand(cmd.Cmd):
     Interpreter class inheriting from Cmd
     """
     prompt = "(hbnb) "
-    class_list = ["BaseModel"]
-    int_attrs = ["number_rooms", "number_bathrooms", "max_guest",
-                 "price_by_night"]
-    float_attrs = ["latitude", "longitude"]
+    class_list = ["BaseModel", "User"]
 
     def do_quit(self, arg):
         """Quit command to exit the program"""
