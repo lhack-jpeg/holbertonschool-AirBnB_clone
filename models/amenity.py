@@ -7,9 +7,11 @@ the basemodel class.
 from models.base_model import BaseModel
 import models
 
+
 class Amenity(BaseModel):
     '''Constructor for Amenity class.'''
     name = ""
+
     def __init__(self, *args, **kwargs):
         super().__init__()
 

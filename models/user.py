@@ -7,12 +7,14 @@ the basemodel class.
 from models.base_model import BaseModel
 import models
 
+
 class User(BaseModel):
     '''Constructor for User class.'''
     email = ""
     password = ""
     first_name = ""
     last_name = ""
+
     def __init__(self, *args, **kwargs):
         super().__init__()
 

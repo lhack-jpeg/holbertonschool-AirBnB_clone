@@ -8,7 +8,6 @@ import models
 time = "%Y-%m-%dT%H:%M:%S.%f"
 
 
-
 class BaseModel:
     """
     This is the base model class
