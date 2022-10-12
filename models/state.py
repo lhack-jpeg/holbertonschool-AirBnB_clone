@@ -7,7 +7,7 @@ the basemodel class.
 from models.base_model import BaseModel
 import models
 
-def State(BaseModel):
+class State(BaseModel):
     '''Constructor for State Class'''
     name = ""
     def __init__(self, *args, **kwargs):
