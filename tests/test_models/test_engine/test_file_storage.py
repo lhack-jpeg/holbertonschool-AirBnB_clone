@@ -49,7 +49,7 @@ class TestFileStorage(unittest.TestCase):
     def test_file_path(self):
         '''Test the file_path exists.'''
         self.storage.save()
-        file_path = FileStorage._FileStorage__file_path
+        file_path = self.storage._FileStorage__file_path
         self.assertTrue(os.path.exists(file_path))
 
     def test_file_storage_objects(self):
