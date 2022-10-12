@@ -184,18 +184,18 @@ class HBNBCommand(cmd.Cmd):
             setattr(value, args[2], args[3].replace('"', ''))
             models.storage.save()
 
-
     def default(self, arg):
         '''This function handles class.cmd() functionality.'''
         args = arg.split('.')
         if len(args) > 1:
-                if args[0] in self.class_list:
-                    if args[1] == 'all()':
-                        self.do_all(args[0])
-                        return
-                    if args[1] == 'count()':
-                        self.do_count(args[0])
-                        return
+            if args[0] in self.class_list:
+                if args[1] == 'all()':
+                    self.do_all(args[0])
+                    return
+                if args[1] == 'count()':
+                    self.do_count(args[0])
+                    return
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
