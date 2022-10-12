@@ -16,4 +16,4 @@ class City(BaseModel):
 
     def __str__(self):
         """Changes the str return for class"""
-        return f"[User] ({self.id}) {self.__dict__}"
+        return f"[City] ({self.id}) {self.__dict__}"
