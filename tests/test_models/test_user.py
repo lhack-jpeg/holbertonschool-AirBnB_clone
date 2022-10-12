@@ -20,6 +20,13 @@ class TestUserModelDocs(unittest.TestCase):
         class_docs = User.__doc__
         self.assertTrue(len(class_docs) >= 1)
 
+    def test_pycode_class(self):
+        """ Checks pycodestyle for base """
+        style = pycodestyle.StyleGuide(quiet=False)
+        result = style.check_files(['models/user.py'])
+        self.assertEqual(result.total_errors, 0,
+                         "Found code style errors (and warnings).")
+
 class TestUserModel(unittest.TestCase):
     '''Test the unit model constructor'''
 
