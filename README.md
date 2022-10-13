@@ -4,15 +4,12 @@
 </p>
 
 ## :page_with_curl: Description
----
 This console is the first part of the AirBnB project at Holberton School. This program will cover some concepts from higher level programming that we have studied and gone over during the curriculum. The goal of this project is to produce a simple clone of the AirBnB website. A simple command interpeter has been created to manage the main objects for the website.
 
 ## :evergreen_tree: Environment
----
 All files are interpreted/compiled on Ubuntu 20.04 LTS using python3 (version 3.8.5)
 
 ## :cd: Compilation
----
 > Step 1: Clone git hub repository locally using the following command
 ```
 git clone https://github.com/lhack-jpeg/holbertonschool-AirBnB_clone
@@ -37,7 +34,6 @@ Ctrl+D
 ```
 
 ## :hourglass: Operations
----
 ### Interactive mode
 In the interactive mode the console will display the (hbnb) prompt awaiting for user input. After the user inputs a command the command will be executed and the (hbnb) will be displayed again, in a new line, awaiting for using unput again. As long as the user doesn't exit the program (by using 'quit' or 'Ctrl+D'), this will go on indefinitely. Example:
 ```
@@ -87,7 +83,6 @@ python3 -m unittest discover tests
 echo "python3 -m unittest discover tests" | bash
 ```
 ## :open_file_folder: File Descriptions
----
 ### [console.py](console.py)
 The console is the entry point of the interpreter, the list of commands that are supported are as follows:
 - ```EOF``` - Exits the program using 'Ctrl+D'.
@@ -121,7 +116,6 @@ The file_storage file serializes instances to a JSON file & deserializes back to
 - ```def reload(self)``` - Reads the JSON file and deserialise the file. If the file doesn't exist, does nothing.
 
 ## :clapper: Examples
----
 ```
 (hbnb) all
 
@@ -148,10 +142,8 @@ cc4858f7-5d54-484f-ae71-641f4021696a
 (hbnb) 
 ```
 ## :ant: Bugs
----
 No known bugs at this stage.
 
 ## :paperclip: Authors
----
 - [Luke Hacket](https://github.com/lhack-jpeg)
 - [Dylan Anderson](https://github.com/RubberizedDuck)
