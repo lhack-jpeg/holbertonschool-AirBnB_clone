@@ -44,7 +44,7 @@ class TestFileStorage(unittest.TestCase):
             os.remove("file.json")
         cls.storage = FileStorage()
         cls.storage.reload()
-        cls.all_objs = storage.all()
+        cls.all_objs = store.all()
         cls.b1 = BaseModel()
 
     def test_file_path(self):
