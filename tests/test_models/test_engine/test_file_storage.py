@@ -55,7 +55,7 @@ class TestFileStorage(unittest.TestCase):
 
     def test_file_storage_objects(self):
         '''Test to see the __object attribute.'''
-        all_objs = self.storage._FileStorage__objects
+        all_objs = FileStorage()._FileStorage__objects
         self.assertTrue(isinstance(all_objs, dict))
 
     def test_file_storage_new(self):
