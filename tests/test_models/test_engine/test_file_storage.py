@@ -9,6 +9,7 @@ import os
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 from models import storage
+import models
 
 
 class TestFileStorageDocs(unittest.TestCase):
@@ -47,21 +48,15 @@ class TestFileStorage(unittest.TestCase):
         cls.b1 = BaseModel()
 
     def test_file_path(self):
-        '''Test the file_path exists.'''
-        self.storage.save()
+        '''Test the __file_path exists.'''
         file_path = self.storage._FileStorage__file_path
-        self.assertEqual(FileStorage()._FileStorage__file_path, "file.json")
-        self.assertTrue(os.path.exists(file_path))
+        self.assertIsNotNone(file_path)
+        self.assertEqual(file_path, "file.json")
 
     def test_file_storage_objects(self):
         '''Test to see the __object attribute.'''
-        self.assertTrue(isinstance(FileStorage().all(), dict))
-        self.assertTrue(isinstance(self.storage.all(), dict))
-        self.assertTrue(isinstance(self.storage._FileStorage__objects, dict))
-        self.assertTrue(isinstance(FileStorage()._FileStorage__objects, dict))
-        self.assertIs(self.storage.all(), self.storage._FileStorage__objects)
-        self.assertIsNotNone(self.storage._FileStorage__objects)
-        self.assertIsNotNone(FileStorage()._FileStorage__objects)
+        all_objs = self.storage._FileStorage__objects
+        self.assertTrue(isinstance(all_objs, dict))
 
     def test_file_storage_new(self):
         '''Test new method functionality of Filestorage.'''
@@ -88,3 +83,7 @@ class TestFileStorage(unittest.TestCase):
         self.storage.reload()
         FileStorage().reload()
         self.assertIsNotNone(self.storage.all())
+
+
+if __name__ == "__main__":
+    unittest.main()
