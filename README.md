@@ -72,7 +72,6 @@ EOF  help  quit
 $
 ```
 ## :wrench: Testing
----
 All files, classes and functions have been tested using unit tests. To check the tests, see example below:
 ### Interactive mode
 ```
