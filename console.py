@@ -198,9 +198,12 @@ class HBNBCommand(cmd.Cmd):
                 cmd_args = args[1].split("(\"")
                 args[1] = cmd_args[0]
                 value = cmd_args[1][:-2]
+                arg_string = f'{args[0]} {value}'
                 if args[1] == 'show':
-                    arg_string = f'{args[0]} {value}'
                     self.do_show(arg_string)
+                    return
+                if args[1] == 'destroy':
+                    self.do_destroy(arg_string)
                     return
 
 
