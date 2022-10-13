@@ -209,14 +209,23 @@ class HBNBCommand(cmd.Cmd):
                 if args[1] == "update":
                     replacements = [
                         ('"', ""),
-                        (',', ""),
+                        ("{", ""),
+                        ("}", ""),
+                        ("'", ""),
                         (')', "")]
                     for old, new in replacements:
                         cmd_args[1] = cmd_args[1].replace(old, new)
-                    values = cmd_args[1].split()
-                    arg_string = args[0] + " "
+                    values = cmd_args[1].split(",")
+                    arg_string = f'{args[0]} '
                     for value in values:
-                        arg_string += f'{value} '
+                        if value.find(":") != -1:
+                            arg_string = f'{args[0]} {values[0]}'
+                            dict_entry = value.split(":")
+                            for entry in dict_entry:
+                                arg_string += f'{entry} '
+                            self.do_update(arg_string)
+                        else:
+                            arg_string += f'{value} '
                     self.do_update(arg_string)
                     return
 
