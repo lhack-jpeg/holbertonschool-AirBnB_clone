@@ -196,6 +196,14 @@ class HBNBCommand(cmd.Cmd):
                     if args[1] == 'count()':
                         self.do_count(args[0])
                         return
+                    cmd_args = args[1].split("(\"")
+                    args[1] = cmd_args[0]
+                    value = cmd_args[1].split("\")")
+                    value = value[0]
+                    if args[1] == 'show':
+                        arg_string = f'{args[0]} {value}'
+                        self.do_show(arg_string)
+                        return
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
