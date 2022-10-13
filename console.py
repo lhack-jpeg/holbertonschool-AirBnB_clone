@@ -229,6 +229,12 @@ class HBNBCommand(cmd.Cmd):
                     self.do_update(arg_string)
                     return
 
+            else:
+                print("** class doesn't exist **")
+                return
+        else:
+            return
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
