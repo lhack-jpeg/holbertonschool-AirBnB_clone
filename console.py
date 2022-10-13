@@ -206,6 +206,19 @@ class HBNBCommand(cmd.Cmd):
                     if args[1] == 'destroy':
                         self.do_destroy(arg_string)
                         return
+                if args[1] == "update":
+                    replacements = [
+                        ('"', ""),
+                        (',', ""),
+                        (')', "")]
+                    for old, new in replacements:
+                        cmd_args[1] = cmd_args[1].replace(old, new)
+                    values = cmd_args[1].split()
+                    arg_string = args[0] + " "
+                    for value in values:
+                        arg_string += f'{value} '
+                    self.do_update(arg_string)
+                    return
 
 
 if __name__ == '__main__':
