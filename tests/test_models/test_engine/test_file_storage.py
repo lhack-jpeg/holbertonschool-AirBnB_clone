@@ -51,6 +51,7 @@ class TestFileStorage(unittest.TestCase):
         '''Test the __file_path exists.'''
         file_path = self.storage._FileStorage__file_path
         self.assertIsNotNone(file_path)
+        print(file_path)
         self.assertEqual(file_path, "file.json")
 
     def test_file_storage_objects(self):
