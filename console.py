@@ -198,8 +198,7 @@ class HBNBCommand(cmd.Cmd):
                         return
                     cmd_args = args[1].split("(\"")
                     args[1] = cmd_args[0]
-                    value = cmd_args[1].split("\")")
-                    value = value[0]
+                    value = cmd_args[1][:-2]
                     if args[1] == 'show':
                         arg_string = f'{args[0]} {value}'
                         self.do_show(arg_string)
