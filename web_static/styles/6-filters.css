@@ -9,7 +9,7 @@
 }
 
 .filters .locations {
-    margin-left: 30px  ;
+    margin-left: 30px;
     width: 25%;
     border-right: 1px solid #ddd;
     height: 100%;
@@ -32,21 +32,21 @@
     list-style: none;
     border: 1px solid #ddd;
     padding: 1.5rem 0 1.5rem 1.45rem;
-    width: 102%;
+    width: 99%;
     margin-left: -30px;
     margin-top: 0;
-    background-color: #FAFAFA;
+    background-color: #fafafa;
 }
 
-.popover ul{
+.popover ul {
     list-style: none;
 }
 
-.popover h2{
+.popover h2 {
     font-size: 16px;
 }
 
-.popover li{
+.popover li {
     padding: 0.25rem;
 }
 
@@ -55,21 +55,21 @@
     margin-bottom: 0.25rem;
 }
 
-.locations:hover .popover{
+.locations:hover .popover {
     display: block;
 }
 
-.filter .amenities .popover{
-    margin-top: 1.335rem;
+.filters .amenities .popover {
+    margin-top: 1rem;
 }
 
-.filter .amenities:hover .popover{
+.filters .amenities:hover .popover {
     display: block;
 }
 
 .filters button {
     font-size: 18px;
-    background-color: #FF5A5F;
+    background-color: #ff5a5f;
     color: #fff;
     height: 48px;
     width: 20%;
@@ -81,5 +81,5 @@
 }
 
 .filters button:hover {
-   background-color: rgba(255, 90, 95, 0.9);
+    background-color: rgba(255, 90, 95, 0.9);
 }
