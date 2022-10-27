@@ -59,11 +59,11 @@
     display: block;
 }
 
-.amenities .popover{
+.filter .amenities .popover{
     margin-top: 1.335rem;
 }
 
-.amenities:hover .popover{
+.filter .amenities:hover .popover{
     display: block;
 }
 
