@@ -82,6 +82,7 @@
 .places .amenities,
 .places .reviews {
     width: 100%;
+    margin-top: 40px;
 }
 
 .places .amenities h2,
