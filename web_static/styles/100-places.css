@@ -1,0 +1,121 @@
+.places {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+
+.places h1 {
+    width: 100%;
+    font-size: 30px;
+}
+
+.places article {
+    width: 390px;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #ff5a5f;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.places article>h2 {
+    font-size: 30px;
+    display: inline-block;
+    margin: 0.75rem auto 2rem;
+}
+
+.price_by_night {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ff5a5f;
+    border: 4px solid #ff5a5f;
+    border-radius: 100%;
+    min-width: 60px;
+    height: 60px;
+    font-size: 30px;
+    padding: 0.5rem;
+    position: absolute;
+    right: 0.75rem;
+    top: 0.75rem;
+}
+
+.information {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #ddd;
+    border-left: none;
+    border-right: none;
+    justify-content: space-evenly;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.user {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.max_guest,
+.number_rooms,
+.number_bathrooms {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+}
+
+.max_guest p,
+.number_rooms p,
+.number_bathrooms p {
+    text-align: center;
+    margin-top: 0.25rem;
+}
+
+.places .amenities,
+.places .reviews {
+    width: 100%;
+}
+
+.places .amenities h2,
+.places .reviews h2 {
+    font-size: 16px;
+    width: 100%;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.places .amenities ul,
+.places .reviews ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.places .amenities li {
+    display: flex;
+    align-items: center;
+    padding-bottom: 0.75rem;
+}
+
+.amenities li img {
+    width: 1.5rem;
+    height: 1.5rem;
+    padding-right: 2rem;
+}
+
+.reviews h3 {
+    font-size: 14px;
+    margin-bottom: 0.2rem;
+}
+
+.reviews p {
+    font-size: 12px;
+    margin-top: 0.25rem;
+}
